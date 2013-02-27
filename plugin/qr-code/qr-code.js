@@ -44,7 +44,7 @@
 	});
 	
 	control.dblclick(function() {
-		showQrCode(window.location.pathname);
+		showQrCode(window.location.origin + window.location.pathname);
 	});
 	
 	$(".reveal a").click(function() {
