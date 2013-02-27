@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>HoloColorPicker - A short introduction</title>
+
+		<meta name="description" content="A short introduction to the Android library HoloColorPicker which allows the user to pick a color using a color wheel">
+		<meta name="author" content="cketti">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/cketti.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
+		<link rel="stylesheet" href="lib/css/googlecode.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>HoloColorPicker</h1>
+					<p>
+					    <img class="borderless" src="images/framed_HoloColorPicker.png" width="295" height="512">
+					</p>
+					<p>
+						Android Stammtisch Berlin, February 2013<br>
+					</p>
+					<p>
+						<small><a href="https://github.com/cketti">cketti</a> / <a href="https://plus.google.com/110214177917096895451/posts">+Christian Ketterer</a></small>
+					</p>
+				</section>
+				
+				<section id="what">
+					<h2>What is it?</h2>
+					<ul class="bulletpoints">
+						<li>A small library providing a custom view to allow users to pick a color using a color wheel</li>
+						<li>Developed by <a href="https://plus.google.com/113646442457708412671/posts">+Lars Werkman</a></li>
+						<li>Designed by <a href="https://plus.google.com/115374955104579332297/posts">+Marie Schweiz</a>, presented at the <a href="http://vimeo.com/51591460#t=14m50s">Android Design principles workshop</a></li>
+						<li><a href="http://bit.ly/Wfh6ep">Demo application</a> (<a href="https://github.com/cketti/HoloColorPicker_demo">Github repo</a>)</li>
+						<!-- Long URI: http://cketti.github.com/HoloColorPicker_demo/bin/HoloColorPicker_demo_0.1.apk -->
+					</ul>
+				</section>
+
+				<section id="ui">
+					<h2>UI elements</h2>
+					
+					<img class="borderless floating-image" src="images/colorwheel_plus.png">
+					<ol class="left-of-image">
+						<li>Colorwheel</li>
+						<li>Pointer</li>
+						<li>Pointer halo</li>
+						<li>Previous color</li>
+						<li>Selected color</li>
+					</p>
+				</section>
+
+				<section>
+				<section id="usage_layout">
+					<h2>Usage</h2>
+					<h4>Layout</h4>
+					
+					<pre><code class="language-xml">
+&lt;com.larswerkman.colorpicker.ColorPicker
+    android:id="@+id/color_picker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/&gt;
+<div class="fragment">
+&lt;com.larswerkman.colorpicker.SVBar
+    android:id="@+id/svbar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/&gt;
+
+&lt;com.larswerkman.colorpicker.OpacityBar
+    android:id="@+id/opacitybar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/&gt;
+</div>
+					</code></pre>
+				</section>
+				
+				<section id="usage_code">
+					<h2>Usage</h2>
+					<h4>Code</h4>
+					
+					<pre><code class="language-java">
+ColorPicker picker = (ColorPicker) findViewById(R.id.color_picker);
+SVBar svBar = (SVBar) findViewById(R.id.svbar);
+OpacityBar opacityBar = (OpacityBar) findViewById(R.id.opacitybar);
+
+// Link Saturation and Opacity bar to the color picker view
+picker.addSVBar(svBar);
+picker.addOpacityBar(opacityBar);
+
+// Set a previously selected color
+picker.setOldCenterColor(savedColor);
+
+// Get notified when the user changes the color
+picker.setOnColorChangedListener(...);
+
+// Get color
+int newColor = picker.getColor();
+					</code></pre>
+				</section>
+
+				</section>
+
+				<section>
+				<section id="customization">
+					<h2>Customization</h2>
+					<h4>Color picker appearance</h4>
+					
+					<pre><code class="language-xml">
+<span class="not-important">&lt;SomeContainer</span>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    <span class="not-important">...&gt;</span>
+	
+    <span class="not-important">&lt;com.larswerkman.colorpicker.ColorPicker
+        android:id="@+id/color_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"</span>
+        app:color_wheel_radius="124dp"
+        app:color_wheel_thickness="8dp"
+        app:color_center_radius="54dp"
+        app:color_center_halo_radius="60dp"
+        app:color_pointer_radius="14dp"
+        app:color_pointer_halo_radius="18dp"<span class="not-important">/&gt;</span>
+					</code></pre>
+
+				</section>
+
+				<section id="comparison">
+					<h2>Customization</h2>
+					<h4>Example</h4>
+					
+					<img src="images/screenshot_2_modified.png">
+					<img src="images/screenshot_3.png">
+
+				</section>
+
+				</section>
+
+				<section id="suggestions">
+					<h2>Suggestions for improvement</h2>
+					<ul class="bulletpoints">
+						<li>Visual indication for focus and selection</li>
+						<li>Support for non-touch devices (keyboard navigation)</li>
+						<li>Allow changing the appearance programmatically</li>
+						<li>Use "halo width" instead of "halo radius"</li>
+						<li>Play around with the demo to find some display bugs.<br>
+							<strong>Fix them!</strong></li>
+					</ul>
+				</section>
+				
+				<section id="summary">
+					<h2>Summary</h2>
+					<table class="summary">
+						<tr>
+							<th>Library name:</th>
+							<td>HoloColorPicker</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>A customizable Holo-themed color picker</td>
+						</tr>
+						<tr>
+							<th>Author:</th>
+							<td><a href="https://github.com/LarsWerkman">Lars Werkman</a></td>
+						</tr>
+						<tr>
+							<th>Source:</th>
+							<td><a href="https://github.com/LarsWerkman/HoloColorPicker">https://github.com/LarsWerkman/HoloColorPicker</a></td>
+						</tr>
+						<tr>
+							<th>License:</th>
+							<td>Apache License, Version 2.0</td>
+						</tr>
+						<tr>
+							<th>Android versions:</th>
+							<td>API 8+</td>
+						</tr>
+						<tr>
+							<th>Features:</th>
+							<td>
+								<ul>
+									<li>Pick a color using a fun-to-use color wheel</li>
+									<li>Optional slider to change saturation</li>
+									<li>Optional slider to specify opacity</li>
+									<li>Customizable appearance</li>
+									<li>Includes Javadoc comments :)</li>
+								</ul>
+							</td>
+						</tr>
+
+					</table>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="lib/js/jquery-1.9.1.min.js"></script>
+		<script src="lib/js/jquery.qrcode.js"></script>
+		<script src="lib/js/qrcode.js"></script>
+		
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				rollingLinks: false,
+				
+				width: 1280,
+				height: 960,
+
+				theme: Reveal.getQueryHash().theme || 'cketti', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/qr-code/qr-code.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
