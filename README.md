@@ -1,12 +1,12 @@
 HoloColorPicker slides
 ======================
 
-Slides for a short introduction to the Android library [HoloColorPicker][1].
+[Slides][1] for a short introduction to the Android library [HoloColorPicker][2].
 
 
-This presentation was created using [reveal.js][2]. The "extension" to display links as QR codes
-is a hack (Works on my Machine(tm)) that uses [jquery-qrcode][3] which in turn depends on
-[QRCode for JavaScript][4] and [jQuery][5].
+This presentation was created using [reveal.js][3]. The "extension" to display links as QR codes
+is a hack (Works on my Machine(tm)) that uses [jquery-qrcode][4] which in turn depends on
+[QRCode for JavaScript][5] and [jQuery][6].
 
 
 License
@@ -32,8 +32,9 @@ License for the stuff written by me.
 
 
 
- [1]: https://github.com/LarsWerkman/HoloColorPicker
- [2]: https://github.com/hakimel/reveal.js
- [3]: https://github.com/jeromeetienne/jquery-qrcode
- [4]: http://d-project.googlecode.com/svn/trunk/misc/qrcode/js/
- [5]: http://jquery.com/
+ [1]: http://cketti.github.com/HoloColorPicker_slides/HoloColorPicker.html
+ [2]: https://github.com/LarsWerkman/HoloColorPicker
+ [3]: https://github.com/hakimel/reveal.js
+ [4]: https://github.com/jeromeetienne/jquery-qrcode
+ [5]: http://d-project.googlecode.com/svn/trunk/misc/qrcode/js/
+ [6]: http://jquery.com/
